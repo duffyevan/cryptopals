@@ -17,3 +17,14 @@ char *xorStrings(char *string1, char *string2){
 	ret[++i] = 0;
 	return ret;	
 }
+
+
+char *xorStringsn(char *string1, char *string2, int len){
+	char *ret = calloc(len + 1, sizeof(char));
+	int i;
+	for (i = 0 ; i < len ; i++){
+		ret[i] = string1[i] ^ string2[i];
+	}
+	ret[++i] = 0;
+	return ret;	
+}
