@@ -1,7 +1,7 @@
-all: set1
+all: main
 
-set1: main.o stringtohex.o hexto64.o
-	cc -o set1 main.o stringtohex.o hexto64.o
+main: main.o stringtohex.o hexto64.o
+	cc -o main main.o stringtohex.o hexto64.o
 
 stringtohex.o: stringtohex.c
 	gcc -c -o stringtohex.o stringtohex.c
@@ -13,4 +13,4 @@ main.o: main.c
 	gcc -c -o main.o main.c
 
 clean:
-	rm -rf set1 *.o
+	rm -rf main *.o
