@@ -5,7 +5,7 @@
 char *applyXOR(char *cipher, char key){
 	int len = strlen(cipher);
 	char *ret = calloc(len, sizeof(char));
-	strncpy(ret, cipher, len); // TODO AHHHHH NEVER DO THIS!!! (plz use strncpy)
+	strncpy(ret, cipher, len); // TODO AHHHHH NEVER DO THIS!!! (plz use strncpy without the length command)
 	int i;
 	for (i = 0; i < len; i++){
 		ret[i] = ret[i] ^ key;
@@ -46,3 +46,31 @@ int isLetter(char c){
 int isNumber(char c){
 	return c >= '0' && c <= '9';
 }
+
+int isCapital(char c){
+	return (c >= 'A' && c <= 'Z'); 
+			
+}
+
+int englishScore(char *string){
+	int len = strlen(string);
+	int score = 0;
+	for (int i = 0; i < len-2; i ++){
+		if (isVoul(string[i]) && isVoul(string[i+1]) && isVoul(string[i+2]))
+			score--;
+		if (!isVoul(string[i]) && !isVoul(string[i+1]) && !isVoul(string[i+2]))
+			score--;
+	}
+	
+	for (int i = 0; i < len-1; i ++){
+		if (string[i] == ' ' && isCapital(string[i+1]))
+			score++;
+		if (isCapital(string[i]) && isCapital(string[i+1]))
+			score--;
+		// TODO add more scoring
+	}
+}
+
+
+
+
